@@ -13,3 +13,54 @@
 8 4 4 2
 
 */
+
+int[,] GetArray() {
+    int[,] array = new int[3,4];
+    for (int j = 0; j < 3; j++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            array[j, i] = new Random().Next(1, 11);
+        }
+    }
+    return array;
+}
+
+void PrintArray(int[,] array) {
+    for (int j = 0; j < 3; j++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            System.Console.Write(array[j, i]); 
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+
+int[,] Sort(int[,] array) {
+    
+    for (int j = 0; j <= array.Rank; j++) {
+        int[] temp = new int[array.GetLength(0)];
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            temp[i] = array[j, i];  
+        }
+        Array.Sort(temp);
+        for (int k = 0; k < array.GetLength(0); k++)
+        {
+            array[j, k] = temp[k];
+        }
+    }
+
+    return array;
+}
+
+void Main() {
+    int[,] arr = GetArray();
+    PrintArray(arr);
+    int[,] sorted = Sort(arr);
+    PrintArray(sorted);
+}
+
+Main();
