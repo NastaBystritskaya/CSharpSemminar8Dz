@@ -10,3 +10,39 @@
 26(1,0,1) 55(1,1,1)
 
 */
+
+int[, ,] GetArray() {
+    int[, ,] array = new int[2, 2, 2];
+    for (int j = 0; j < array.GetLength(0); j++)
+    {
+        for (int i = 0; i < array.GetLength(1); i++)
+        {
+            for(int k = 0; k < array.GetLength(2); k++) {
+                array[j, i, k] = new Random().Next(10, 100);
+            }
+        }
+    }
+    return array;
+}
+
+void PrintArray(int[, ,] array) {
+    for (int j = 0; j < array.GetLength(0); j++)
+    {
+        for (int i = 0; i < array.GetLength(1); i++)
+        {
+            for(int k = 0; k < array.GetLength(2); k++) {
+                System.Console.Write($"{array[j, i, k]} ({j}, {i}, {k}) "); 
+            }
+            System.Console.WriteLine();
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+
+void Main() {
+    int[, ,] array = GetArray();
+    PrintArray(array);
+}
+
+Main();
